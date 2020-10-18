@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-ene-2018 19:39:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="examenhibernatetres.Equipos" table="equipos" schema="public" optimistic-lock="version">
+        <id name="codigo" type="string">
+            <column name="codigo" length="12" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="40" />
+        </property>
+        <property name="ubicacion" type="string">
+            <column name="ubicacion" length="30" />
+        </property>
+        <set name="avisoses" table="avisos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigo_equipo" length="12" not-null="true" />
+            </key>
+            <one-to-many class="examenhibernatetres.Avisos" />
+        </set>
+    </class>
+</hibernate-mapping>

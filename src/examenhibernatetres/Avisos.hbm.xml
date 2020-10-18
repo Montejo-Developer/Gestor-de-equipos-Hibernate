@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-ene-2018 19:39:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="examenhibernatetres.Avisos" table="avisos" schema="public" optimistic-lock="version">
+        <composite-id name="id" class="examenhibernatetres.AvisosId">
+            <key-property name="codigoPersona" type="string">
+                <column name="codigo_persona" length="12" />
+            </key-property>
+            <key-property name="codigoEquipo" type="string">
+                <column name="codigo_equipo" length="12" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="29" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="equipos" class="examenhibernatetres.Equipos" update="false" insert="false" fetch="select">
+            <column name="codigo_equipo" length="12" not-null="true" />
+        </many-to-one>
+        <many-to-one name="personas" class="examenhibernatetres.Personas" update="false" insert="false" fetch="select">
+            <column name="codigo_persona" length="12" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" />
+        </property>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29" />
+        </property>
+        <property name="detalles" type="string">
+            <column name="detalles" />
+        </property>
+    </class>
+</hibernate-mapping>
